@@ -12,9 +12,9 @@ def Loss(X, Y, theta):
 
 def gradient(X, Y, theta, alpha, iteration):
     m = len(Y)
-    h_x = np.dot(X, theta) # hypothesis
     print(len(theta))
     for iterate in range(iteration):
+        h_x = np.dot(X, theta)  # hypothesis
         for param in range(len(theta)):  # for each updating  parameters
             grad = sum( (h_x - Y) * X[:,param] )
             theta[param] -= alpha*(1/m)*grad
@@ -37,8 +37,8 @@ X0[:,1] = X_0
 X = X0
 # hypothesis = theta0*x0 + theta1*x1, x0 is constant here
 print(X)
-iteration = 20
-alpha = 0.001 # learning rate
+iteration = 1000
+alpha = 0.02 # learning rate
 print('Initial loss: ', Loss(X, Y, theta))
 
 # Gradient Descent
@@ -48,6 +48,8 @@ print(theta)
 output = np.dot(X,theta)
 
 plt.plot(X_0, output, 'b-')
+plt.xlabel('feature values')
+plt.ylabel('Ouput values')
 
 plt.show()
 
